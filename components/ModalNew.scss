@@ -1,0 +1,24 @@
+.shim {
+    position: fixed;
+    background: rgba(0,0,0,.65);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index:10;
+          }
+.content {
+    position: absolute;
+    margin: auto;
+    z-index:11;
+
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+    width: 80vw;
+    height:50vh;
+    background: rgba(255, 255, 255, 0.9);
+
+}
