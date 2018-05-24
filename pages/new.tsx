@@ -28,7 +28,6 @@ export default class New extends React.Component {
             credentials: 'same-origin',
         })
             .then(data => {
-                console.log('then')
                 if (!data.ok) this.shake()
                 else {
                     Router.push('/')

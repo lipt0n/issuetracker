@@ -65,18 +65,20 @@ nextapp.prepare().then(() => {
         console.log('MONGODB connected')
         db.createCollection('users', (err, res) => {})
         db.createCollection('issues', (err, res) => {})
-        const u = db.collection('users').findOne({ username: 'user1' })
+        for (const un of [1,2,3,4]){
+        const u = db.collection('users').findOne({ username: 'user'+un })
         u.then(r => {
             if (!r) {
                 // create test user
                 bcrypt.hash('password', 10).then((hash: string) => {
                     db.collection('users').insert({
-                        username: 'user1',
+                        username: 'user'+un,
                         password: hash,
                     })
                 })
             }
         })
+        }
 
         passport.use(
             new LocalStrategy(async (username: string, password: string, done: any) => {

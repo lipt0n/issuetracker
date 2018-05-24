@@ -17,7 +17,6 @@ export default class Login extends React.PureComponent {
     }
     login = e => {
         e.preventDefault()
-        console.log('sending: ', JSON.stringify({ ...this.state }))
         const headers = new Headers()
         headers.append('Accept', 'application/json')
         headers.append('Content-Type', 'application/json')
@@ -29,7 +28,6 @@ export default class Login extends React.PureComponent {
             credentials: 'same-origin',
         })
             .then(data => {
-                console.log('then', data)
                 if (!data.ok) this.shake()
                 else {
                     Router.push('/')
