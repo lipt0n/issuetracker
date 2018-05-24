@@ -8,8 +8,11 @@ Issue tracker
 
 
 ![alt text](show.gif)
+##### add new issue
 ![alt text](show2.gif)
+##### status open -> pending -> closed
 ![alt text](show3.gif)
+##### /new as popup and static 
 ![alt text](show4.gif)
 
 * typescript
