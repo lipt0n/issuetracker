@@ -53,9 +53,9 @@ nextapp.prepare().then(() => {
     app.use(passport.initialize())
     app.use(passport.session())
 
-    const dbname = process.env.MONGO_DBNAME_STRING?process.env.MONGO_DBNAME_STRING:'issuetracker'
-    const mongo_url: string = process.env.MONGO_CONNECTION_STRING
-        ? process.env.MONGO_CONNECTION_STRING
+    const dbname = process.env.MONGODB_URI?process.env.MONGODB_URI.split('/').slice(-1)[0]:'issuetracker'
+    const mongo_url: string = process.env.MONGODB_URI
+        ? process.env.MONGODB_URI
         : 'mongodb://localhost:27017'
     // @ts-ignore
     const MongoClientOptions: mongodb.MongoClientOptions = { useNewUrlParser: true }
