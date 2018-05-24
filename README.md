@@ -1,6 +1,8 @@
 #Issue tracker
 ![alt text](show.gif)
-
+![alt text](show2.gif)
+![alt text](show3.gif)
+![alt text](show4.gif)
 
 * typescript
 * express
