@@ -45,11 +45,11 @@ export default ({ _id, date, status, title, description, user }) => {
     const _date = typeof date !== 'undefined' ? new Date(date) : new Date()
     return (
         <tr>
-            <td>{_date.toUTCString()} </td>
-            <td>{user && user.username}</td>
+            <td className='issue_date'>{_date.toUTCString()} </td>
+            <td className='issue_user'>{user && user.username}</td>
             <GetStatus status={status} onClick={e => changeStatus(e, _id)} />
-            <td>{title}</td>
-            <td>{description}</td>
+            <td className='issue_title'>{title}</td>
+            <td className='issue_description'>{description}</td>
         </tr>
     )
 }
