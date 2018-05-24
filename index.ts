@@ -32,7 +32,7 @@ nextapp.prepare().then(() => {
 
     app.use(
         cors({
-            origin: ['http://localhost:4000'],
+            origin: ['*'],
             methods: ['GET', 'POST'],
             credentials: true,
             allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Credentials'],
@@ -53,7 +53,7 @@ nextapp.prepare().then(() => {
     app.use(passport.initialize())
     app.use(passport.session())
 
-    const dbname = 'issuetracker'
+    const dbname = process.env.MONGO_DBNAME_STRING?process.env.MONGO_DBNAME_STRING:'issuetracker'
     const mongo_url: string = process.env.MONGO_CONNECTION_STRING
         ? process.env.MONGO_CONNECTION_STRING
         : 'mongodb://localhost:27017'

@@ -51,7 +51,7 @@ export default class App extends React.Component<MyComponentProps, any> {
             headers.append('Content-Type', 'application/json')
             const response = await fetch('/api/issues', {
                 headers,
-                credentials: 'include',
+                credentials: 'same-origin',
             })
             if (response.status !== 200) {
                 Router.push('/login')

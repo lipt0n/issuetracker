@@ -13,7 +13,7 @@ const changeStatus = async (e, _id) => {
             }),
             method: 'post',
             headers,
-            credentials: 'include',
+            credentials: 'same-origin',
         })
         if (response.ok) {
             Router.reload('/')

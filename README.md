@@ -10,6 +10,7 @@ Issue tracker
 * express
 * passport
 * next.js
+* SSR
 * react
 * mongodb
 
@@ -23,7 +24,7 @@ yarn dev
 --------
 
 - yarn test 
-will run unit tests for components
+will run unit tests for components 
 - yarn testrest
 will test API ( you need to run yarn dev first)
 

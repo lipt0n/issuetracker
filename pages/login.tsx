@@ -26,7 +26,7 @@ export default class Login extends React.PureComponent {
             body: JSON.stringify({ ...this.state }),
             headers,
             method: 'POST',
-            credentials: 'include',
+            credentials: 'same-origin',
         })
             .then(data => {
                 console.log('then', data)

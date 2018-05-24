@@ -25,7 +25,7 @@ export default class New extends React.Component {
             body: JSON.stringify({ ...this.state }),
             headers,
             method: 'POST',
-            credentials: 'include',
+            credentials: 'same-origin',
         })
             .then(data => {
                 console.log('then')
