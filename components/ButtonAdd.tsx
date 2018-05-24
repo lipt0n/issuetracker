@@ -1,9 +1,11 @@
+import React from 'react'
 import Link from 'next/link'
-import globalStyle from  "../pages/global.scss"
 
 const ButtonAdd = () => {
-    return <Link as={'/new'} href={`/?new=true`}>
-            <a className={globalStyle.buttonNew}>+ ADD NEW ISSUE</a>
-            </Link>
+    return (
+        <Link as={'/new'} href={`/?new=true`}>
+            <a className={'buttonNew'}>+ ADD NEW ISSUE</a>
+        </Link>
+    )
 }
-export {ButtonAdd}
+export { ButtonAdd }

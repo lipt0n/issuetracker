@@ -7,19 +7,18 @@ const { expect } = chai
 chai.use(require('chai-like'))
 chai.use(require('chai-things'))
 
-import New from './new'
-describe('new issue window', () => {
+import {ButtonAdd} from './ButtonAdd'
+describe('ButtonAdd component', () => {
     before('configure', () => {
         Enzyme.configure({ adapter: new Adapter() })
     })
     it('should render component', () => {
         const wrapper = Enzyme.mount(
             <div id="dummyWrap">
-                <New />
+                <ButtonAdd />
             </div>
         )
         expect(wrapper).to.have.length(1)
-        expect(wrapper.find('h1')).to.have.length(1)
-        expect(wrapper.find('button')).to.have.length(1)
+        expect(wrapper.find('a')).to.have.length(1)
     })
 })

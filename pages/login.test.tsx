@@ -7,15 +7,15 @@ const { expect } = chai
 chai.use(require('chai-like'))
 chai.use(require('chai-things'))
 
-import New from './new'
-describe('new issue window', () => {
+import Login from './login'
+describe('new login window', () => {
     before('configure', () => {
         Enzyme.configure({ adapter: new Adapter() })
     })
     it('should render component', () => {
         const wrapper = Enzyme.mount(
             <div id="dummyWrap">
-                <New />
+                <Login />
             </div>
         )
         expect(wrapper).to.have.length(1)

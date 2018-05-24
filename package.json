@@ -4,18 +4,15 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test1": "mocha-webpack --webpack-config webpack.config.js pages/*.test.tsx ",
-    "test": "nyc mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
-    "testrest": "nyc mocha -r ts-node/register ./*.test.ts",
+    "test": "mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
+    "testrest": "mocha -r ts-node/register ./*.test.ts",
     "dev": "ts-node-dev --ignore-watch .next* index.ts",
-    "dev2": "next"
+    "devfront": "next"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@zeit/next-sass": "^0.2.0",
-    "awesome-typescript-loader": "^5.0.0",
-    "babel-register": "^6.26.0",
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
@@ -36,7 +33,6 @@
     "morgan": "^1.9.0",
     "next": "^6.0.3",
     "next-awesome-typescript": "^0.3.1",
-    "node-sass": "^4.9.0",
     "nyc": "^11.8.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
@@ -47,6 +43,7 @@
     "ts-mocha": "^1.2.0",
     "ts-node": "^6.0.3",
     "tslib": "^1.9.1",
+    "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   },
   "devDependencies": {
@@ -59,11 +56,12 @@
     "@types/mocha": "^5.2.0",
     "@types/mongodb": "^3.0.18",
     "@types/morgan": "^1.7.35",
+    "@types/next": "^2.4.11",
     "@types/node": "^10.1.2",
     "@types/passport": "^0.4.5",
     "@types/passport-local": "^1.0.33",
     "@types/react": "^16.3.14",
-    "ignore-styles": "^5.0.1",
-    "mocha-webpack": "^1.1.0"
+    "jsdom": "^11.11.0",
+    "jsdom-global": "^3.0.2"
   }
 }
