@@ -231,6 +231,10 @@ nextapp.prepare().then(() => {
         console.log('MONGODB connection error')
         console.log('-----------------ERROR:-----------')
         console.log(e)
+        console.log('------------------------------')
+        console.log('URL: ',mongo_url)
+        console.log('DBNAME: ', dbname)
+        
         process.exit(1)
     })
 })
