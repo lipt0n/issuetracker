@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js run cross-env NODE_ENV=production next build
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add source-map-support
 
 PATH: 
   C:\tools\cmder\bin;C:\tools\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\tools\cmder\vendor\conemu-maximus5;C:\tools\cmder\vendor\conemu-maximus5\ConEmu;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;C:\Python36\Scripts\;C:\Python36\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\mjl\.windows-build-tools\python27\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\mjl\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\mjl\AppData\Roaming\npm\node_modules\.bin;C:\Python36\Scripts\;C:\Python36\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\mjl\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\mjl\AppData\Local\.meteor;C:\Users\mjl\AppData\Roaming\npm;C:\Users\mjl\AppData\Local\Yarn\bin;C:\tools\cmder;d:\Programy\Docker Toolbox;C:\Users\mjl\AppData\Local\atom\bin;C:\Users\mjl\.babun;C:\Users\mjl\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\tools\cmder\
@@ -20,12 +20,29 @@ npm manifest:
     "description": "",
     "main": "index.ts",
     "scripts": {
-      "test": "mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
+      "test": "nyc mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
       "testrest": "mocha -r ts-node/register ./*.test.ts",
       "dev": "ts-node-dev --ignore-watch .next* index.ts",
       "devfront": "next",
-      "herokudev": "NODE_ENV=developement MONGO_CONNECTION_STRING=mongodb://heroku_nv8wr1sv:myherokudb1@ds125680.mlab.com:25680/heroku_nv8wr1sv MONGO_DBNAME_STRING=heroku_nv8wr1sv ts-node index.ts",
-      "heroku": "NODE_ENV=production next build; NODE_ENV=production MONGO_CONNECTION_STRING=mongodb://heroku_nv8wr1sv:myherokudb1@ds125680.mlab.com:25680/heroku_nv8wr1sv MONGO_DBNAME_STRING=heroku_nv8wr1sv ts-node index.ts"
+      "herokudev": "NODE_ENV=developement  ts-node index.ts",
+      "heroku": "NODE_ENV=production ts-node index.ts",
+      "postinstall": "NODE_ENV=production next build"
+    },
+    "nyc": {
+      "extension": [
+        ".ts",
+        ".tsx"
+      ],
+      "exclude": [
+        "**/*.d.ts",
+        "*.js",
+        "*.ts",
+        "coverage/**"
+      ],
+      "reporter": [
+        "html"
+      ],
+      "all": true
     },
     "author": "",
     "license": "ISC",
@@ -60,6 +77,7 @@ npm manifest:
       "express": "^4.16.3",
       "express-session": "^1.15.6",
       "fetch-headers": "^2.0.0",
+      "ignore-loader": "^0.1.2",
       "isomorphic-unfetch": "^2.0.0",
       "jsdom": "^11.11.0",
       "jsdom-global": "^3.0.2",
@@ -73,6 +91,7 @@ npm manifest:
       "passport-local": "^1.0.0",
       "react": "^16.3.2",
       "react-dom": "^16.3.2",
+      "source-map-support": "^0.5.6",
       "style-loader": "^0.21.0",
       "ts-loader": "^4.3.0",
       "ts-mocha": "^1.2.0",
@@ -3357,7 +3376,7 @@ Lockfile:
     version "0.1.5"
     resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   
-  ignore-loader@0.1.2:
+  ignore-loader@0.1.2, ignore-loader@^0.1.2:
     version "0.1.2"
     resolved "https://registry.yarnpkg.com/ignore-loader/-/ignore-loader-0.1.2.tgz#d81f240376d0ba4f0d778972c3ad25874117a463"
   
@@ -6189,7 +6208,7 @@ Lockfile:
     dependencies:
       source-map "^0.5.6"
   
-  source-map-support@^0.5.3:
+  source-map-support@^0.5.3, source-map-support@^0.5.6:
     version "0.5.6"
     resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.6.tgz#4435cee46b1aab62b8e8610ce60f788091c51c13"
     dependencies:
@@ -7232,7 +7251,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c C:\Users\mjl\issue-tracker\src\node_modules\.bin\cross-env NODE_ENV=production next build
+  Arguments: /d /s /c NODE_ENV=production next build
   Directory: C:\Users\mjl\issue-tracker\src
   Output:
   

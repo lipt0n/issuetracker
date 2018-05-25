@@ -4,13 +4,29 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
+    "test": "nyc mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
     "testrest": "mocha -r ts-node/register ./*.test.ts",
     "dev": "ts-node-dev --ignore-watch .next* index.ts",
     "devfront": "next",
     "herokudev": "NODE_ENV=developement  ts-node index.ts",
     "heroku": "NODE_ENV=production ts-node index.ts",
     "postinstall": "NODE_ENV=production next build"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "*.js",
+      "*.ts",
+      "coverage/**"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
   },
   "author": "",
   "license": "ISC",
@@ -59,6 +75,7 @@
     "passport-local": "^1.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "source-map-support": "^0.5.6",
     "style-loader": "^0.21.0",
     "ts-loader": "^4.3.0",
     "ts-mocha": "^1.2.0",

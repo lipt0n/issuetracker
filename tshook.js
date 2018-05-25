@@ -4,3 +4,4 @@ require("ts-node").register({
       jsx: "react"
     },
   })
+  require('source-map-support').install()

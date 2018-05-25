@@ -54,6 +54,7 @@ describe('Issue component', () => {
             </tr></tbody></table>
         )
         expect(wrapper).to.have.length(1)
+        expect(wrapper.find('td.open')).to.have.length(1)
         expect(spy).to.be.false
         wrapper.find('button').simulate('click')
         expect(spy).to.be.true
@@ -67,6 +68,7 @@ describe('Issue component', () => {
             </tr></tbody></table>
         )
         expect(wrapper).to.have.length(1)
+        expect(wrapper.find('td.pending')).to.have.length(1)
         expect(spy).to.be.false
         wrapper.find('button').simulate('click')
         expect(spy).to.be.true
