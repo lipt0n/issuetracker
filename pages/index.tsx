@@ -8,40 +8,33 @@ import Router from 'next/router'
 import Issue from '../components/Issue'
 
 interface User {
-    _id: string,
+    _id: string
     username: string
 }
 interface Issue {
-    _id: string,
-    date: Date,
-    status: string,
-    user: User,
-    title: string,
+    _id: string
+    date: Date
+    status: string
+    user: User
+    title: string
     description: String
-
 }
 interface Context {
-    err?: Error,
-    pathname: string,
+    err?: Error
+    pathname: string
     query?: {
-        [key: string]:
-            | boolean
-            | boolean[]
-            | number
-            | number[]
-            | string
-            | string[]
+        [key: string]: boolean | boolean[] | number | number[] | string | string[]
     }
 }
 type MyComponentProps = {
-    url: Context,
+    url: Context
     issues?: Issue[]
-  }
+}
 export default class App extends React.Component<MyComponentProps, any> {
     static async getInitialProps({ req, res }) {
         if (res) {
             if (!res.issues) return { issues: [] }
-            const result:Issue[] = await res.issues.toArray()
+            const result: Issue[] = await res.issues.toArray()
             return {
                 issues: result,
             }

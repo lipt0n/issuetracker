@@ -1,12 +1,12 @@
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import expressSession from 'express-session'
-import {passport} from './passport'
+import { passport } from './passport'
 import cors from 'cors'
 import morgan from 'morgan'
 import express from 'express'
-import {db} from './db'
-import {add_routes} from './add_routes'
+import { db } from './db'
+import { add_routes } from './add_routes'
 const port = process.env.PORT || 9000
 
 const app = express()
@@ -35,6 +35,6 @@ app.use(passport.session())
 app.listen(port, () => {
     console.log('Server started on port ', port)
 })
-add_routes(app)   
-    
-export {app}
+add_routes(app)
+
+export { app }

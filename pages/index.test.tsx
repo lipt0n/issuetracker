@@ -19,19 +19,18 @@ describe('index', () => {
                 date: new Date(),
                 status: 'open',
                 user: {
-                    _id:'ddddd',
-                    username:'username'
+                    _id: 'ddddd',
+                    username: 'username',
                 },
                 title: 'string',
-                description: 'String'
-            
-            }
+                description: 'String',
+            },
         ]
-        const url={
-            pathname:'/',
+        const url = {
+            pathname: '/',
             query: {
-                'new':false
-            }
+                new: false,
+            },
         }
         const wrapper = Enzyme.mount(
             <div id="dummyWrap">
@@ -50,31 +49,29 @@ describe('index', () => {
                 date: new Date(),
                 status: 'open',
                 user: {
-                    _id:'ddddd',
-                    username:'username'
+                    _id: 'ddddd',
+                    username: 'username',
                 },
                 title: 'string',
-                description: 'String'
-            
+                description: 'String',
             },
             {
                 _id: 'string2',
                 date: new Date(),
                 status: 'pending',
                 user: {
-                    _id:'ddddd',
-                    username:'username'
+                    _id: 'ddddd',
+                    username: 'username',
                 },
                 title: 'string',
-                description: 'String'
-            
-            }
+                description: 'String',
+            },
         ]
-        const url={
-            pathname:'/',
+        const url = {
+            pathname: '/',
             query: {
-                'new':false
-            }
+                new: false,
+            },
         }
         const wrapper = Enzyme.mount(
             <div id="dummyWrap">
@@ -87,12 +84,11 @@ describe('index', () => {
         expect(wrapper.find('table tbody tr td')).to.have.length(10)
     })
     it('should render component without issue', () => {
-        
-        const url={
-            pathname:'/',
+        const url = {
+            pathname: '/',
             query: {
-                'new':false
-            }
+                new: false,
+            },
         }
         const wrapper = Enzyme.mount(
             <div id="dummyWrap">
@@ -104,12 +100,11 @@ describe('index', () => {
         expect(wrapper.find('table tbody tr')).to.have.length(0)
     })
     it('should render modal', () => {
-        
-        const url={
-            pathname:'/',
+        const url = {
+            pathname: '/',
             query: {
-                'new':true
-            }
+                new: true,
+            },
         }
         const wrapper = Enzyme.mount(
             <div id="dummyWrap">

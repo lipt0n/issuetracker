@@ -6,7 +6,7 @@ const chai = require('chai')
 const { expect } = chai
 chai.use(require('chai-like'))
 chai.use(require('chai-things'))
-const  fetchMock = require('fetch-mock')
+const fetchMock = require('fetch-mock')
 import Router from 'next/router'
 
 import New from './new'
@@ -14,11 +14,11 @@ describe('new issue window', () => {
     before('configure', () => {
         Enzyme.configure({ adapter: new Adapter() })
         fetchMock.restore()
-        fetchMock.post('*', (url, opts)=>{
+        fetchMock.post('*', (url, opts) => {
             const body = JSON.parse(opts.body)
-            if(body.description.length>0  && body.title.length>0)
-            return {body:{status:'ok'}}
-            return {status:503}
+            if (body.description.length > 0 && body.title.length > 0)
+                return { body: { status: 'ok' } }
+            return { status: 503 }
         })
     })
     it('should render component', () => {
@@ -38,10 +38,13 @@ describe('new issue window', () => {
             </div>
         )
         //@ts-ignore
-        Router.push =  ()=>done()
-        wrapper.find('[name="description"]').simulate('change', {target: {name:'description', value: 'dadasthfdhf'}})
-        wrapper.find('[name="title"]').simulate('change', {target: {name:'title', value: 'sfsdfsdf sfgegrrefgr dsfs'}})
+        Router.push = () => done()
+        wrapper
+            .find('[name="description"]')
+            .simulate('change', { target: { name: 'description', value: 'dadasthfdhf' } })
+        wrapper
+            .find('[name="title"]')
+            .simulate('change', { target: { name: 'title', value: 'sfsdfsdf sfgegrrefgr dsfs' } })
         wrapper.find('form').simulate('submit')
     })
-
 })
