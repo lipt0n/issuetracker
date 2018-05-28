@@ -6,6 +6,7 @@ import fetch from 'isomorphic-unfetch'
 import Headers from 'fetch-headers'
 import Router from 'next/router'
 import Issue from '../components/Issue'
+
 interface User {
     _id: string,
     username: string
@@ -20,8 +21,8 @@ interface Issue {
 
 }
 interface Context {
-    err?: Error;
-    pathname: string
+    err?: Error,
+    pathname: string,
     query?: {
         [key: string]:
             | boolean
@@ -33,15 +34,14 @@ interface Context {
     }
 }
 type MyComponentProps = {
-    url: Context 
+    url: Context,
     issues?: Issue[]
   }
-  
 export default class App extends React.Component<MyComponentProps, any> {
     static async getInitialProps({ req, res }) {
         if (res) {
             if (!res.issues) return { issues: [] }
-            const result = await res.issues.toArray()
+            const result:Issue[] = await res.issues.toArray()
             return {
                 issues: result,
             }

@@ -9,6 +9,7 @@ chai.use(require('chai-things'))
 
 import {GetStatus} from './Issue'
 import Issue from './Issue'
+const  fetchMock = require('fetch-mock')
 
 describe('Issue component', () => {
     before('configure', () => {

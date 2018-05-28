@@ -40,6 +40,7 @@ PORT (default: __9000__)
 
 - __yarn test__ 
 will run unit tests for components  (pages/*.test.tsx components/*.test.tsx)
+[coverage](https://issuetrackermjl.herokuapp.com/static/coverage/index.html)
 - __yarn testrest__
 will test API (index.test.ts) - *you need to run yarn dev first*
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "nyc mocha -r tshook.js  pages/*.test.tsx components/*.test.tsx",
+    "test": "nyc mocha -r ts-node/register   pages/*.test.tsx components/*.test.tsx ; rm -rf static/coverage; mv --force coverage/ static/coverage/",
     "testrest": "mocha -r ts-node/register ./*.test.ts",
     "dev": "ts-node-dev --ignore-watch .next* index.ts",
     "devfront": "next",
@@ -21,14 +21,21 @@
       "**/*.d.ts",
       "*.js",
       "*.ts",
-      "coverage/**"
+      "**/server/**",
+      "**/coverage/**",
+      "**/_document.tsx"
     ],
     "reporter": [
       "html"
     ],
     "all": true
   },
-  "author": "",
+  "husky": {
+    "hooks": {
+      "precommit": "pretty-quick --staged"
+    }
+  },
+  "author": "mjl",
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^2.0.0",
@@ -61,6 +68,8 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "fetch-headers": "^2.0.0",
+    "fetch-mock": "^6.4.2",
+    "husky": "^1.0.0-rc.8",
     "ignore-loader": "^0.1.2",
     "isomorphic-unfetch": "^2.0.0",
     "jsdom": "^11.11.0",
@@ -73,6 +82,7 @@
     "nyc": "^11.8.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pretty-quick": "^1.6.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "source-map-support": "^0.5.6",

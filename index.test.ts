@@ -1,13 +1,12 @@
-const chai = require('chai')
-import server from './index'
-const {expect} = chai
-chai.use(require('chai-http'))
-chai.use(require('chai-like'))
-chai.use(require('chai-things'))
+const _chai = require('chai')
+const {expect} = _chai
+_chai.use(require('chai-http'))
+_chai.use(require('chai-like'))
+_chai.use(require('chai-things'))
 let srv
 describe('basic rest test', function() {
   before(function(done) {
-    srv = chai.request.agent('http://localhost:9000')
+    srv = _chai.request.agent('http://localhost:9000')
     done()
   })
   it('should get /login',done=>{
@@ -28,27 +27,30 @@ describe('basic rest test', function() {
         done()
     })
   })
-  it('should reject /api/new',done=>{
+  it('should redirect /api/new',done=>{
     srv
     .post('/api/new')
+    .redirects(0)
     .end((err, res) => {
-        expect(res).to.have.status(401)
+        expect(res).to.have.status(302).and.header('Location', '/login')
       done()
     })
   })
-  it('should reject /api/changestatus',done=>{
+  it('should redirect /api/changestatus',done=>{
     srv
     .post('/api/changestatus')
+    .redirects(0)
     .end((err, res) => {
-        expect(res).to.have.status(401)
+        expect(res).to.have.status(302).and.header('Location', '/login')
       done()
     })
   })
-  it('should reject /api/issues',done=>{
+  it('should redirect /api/issues',done=>{
     srv
     .get('/api/issues')
+    .redirects(0)
     .end((err, res) => {
-        expect(res).to.have.status(401)
+        expect(res).to.have.status(302).and.header('Location', '/login')
       done()
     })
   })
