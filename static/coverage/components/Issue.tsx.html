@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.52% </span>
+        <span class="strong">70.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>13/23</span>
+        <span class='fraction'>17/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.33% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>7/12</span>
+        <span class='fraction'>8/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">56.52% </span>
+        <span class="strong">70.83% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/23</span>
+        <span class='fraction'>17/24</span>
       </div>
     </div>
     <p class="quiet">
@@ -101,12 +101,14 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -125,8 +127,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,12 +147,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,10 +160,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react'
 import Router from 'next/router'
+import Headers from 'fetch-headers'
 &nbsp;
-const changeStatus = <span class="fstat-no" title="function not covered" >async</span> (e, _id) =&gt; {
-<span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
-<span class="cstat-no" title="statement not covered" >    if (confirm('are You sure?')) {</span>
+const changeStatus = async (e, _id) =&gt; {
+    e.preventDefault()
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (window.confirm('are You sure?')) {
         const headers = <span class="cstat-no" title="statement not covered" >new Headers()</span>
 <span class="cstat-no" title="statement not covered" >        headers.append('Accept', 'application/json')</span>
 <span class="cstat-no" title="statement not covered" >        headers.append('Content-Type', 'application/json')</span>
@@ -175,7 +178,7 @@ const changeStatus = <span class="fstat-no" title="function not covered" >async<
         })
 <span class="cstat-no" title="statement not covered" >        if (response.ok) {</span>
 <span class="cstat-no" title="statement not covered" >            Router.reload('/')</span>
-        } else <span class="cstat-no" title="statement not covered" >alert('something went wrong ;(')</span>
+        } else <span class="cstat-no" title="statement not covered" >window.alert('something went wrong ;(')</span>
     }
 }
 &nbsp;
@@ -205,7 +208,7 @@ export default ({ _id, date, status, title, description, user }) =&gt; {
         &lt;tr&gt;
             &lt;td className='issue_date'&gt;{_date.toUTCString()} &lt;/td&gt;
             &lt;td className='issue_user'&gt;{user &amp;&amp; user.username}&lt;/td&gt;
-            &lt;GetStatus status={status} onClick={<span class="fstat-no" title="function not covered" >e </span>=&gt; <span class="cstat-no" title="statement not covered" >changeStatus(e, _id)}</span> /&gt;
+            &lt;GetStatus status={status} onClick={e =&gt; changeStatus(e, _id)} /&gt;
             &lt;td className='issue_title'&gt;{title}&lt;/td&gt;
             &lt;td className='issue_description'&gt;{description}&lt;/td&gt;
         &lt;/tr&gt;
@@ -217,7 +220,7 @@ export {GetStatus}</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 28 2018 13:36:08 GMT+0200 (CEST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 28 2018 16:33:38 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../prettify.js"></script>

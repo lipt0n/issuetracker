@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import Headers from 'fetch-headers'
 
 const url = '/api/new'
 

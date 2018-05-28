@@ -1,6 +1,7 @@
 import React from 'react'
 import Router from 'next/router'
-import fetch from 'isomorphic-unfetch'
+import Headers from 'fetch-headers'
+
 const login_url = '/api/login'
 
 export default class Login extends React.PureComponent {

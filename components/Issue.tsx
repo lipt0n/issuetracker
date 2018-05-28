@@ -1,9 +1,10 @@
 import React from 'react'
 import Router from 'next/router'
+import Headers from 'fetch-headers'
 
 const changeStatus = async (e, _id) => {
     e.preventDefault()
-    if (confirm('are You sure?')) {
+    if (window.confirm('are You sure?')) {
         const headers = new Headers()
         headers.append('Accept', 'application/json')
         headers.append('Content-Type', 'application/json')
@@ -17,7 +18,7 @@ const changeStatus = async (e, _id) => {
         })
         if (response.ok) {
             Router.reload('/')
-        } else alert('something went wrong ;(')
+        } else window.alert('something went wrong ;(')
     }
 }
 

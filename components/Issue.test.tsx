@@ -10,10 +10,13 @@ chai.use(require('chai-things'))
 import {GetStatus} from './Issue'
 import Issue from './Issue'
 const  fetchMock = require('fetch-mock')
+import Router from 'next/router'
+const sinon =  require('sinon')
 
 describe('Issue component', () => {
     before('configure', () => {
         Enzyme.configure({ adapter: new Adapter() })
+        fetchMock.restore()
     })
     it('should render component', () => {
         const issue = {
@@ -87,4 +90,39 @@ describe('Issue component', () => {
         wrapper.find('button').simulate('click')
         expect(spy).to.be.false
     })
+    it('should send status change', (done) => {
+        const issue = {
+            _id: 'test_id_12313',
+            date: new Date(),
+            status: 'open',
+            user: {
+                _id:'ddddd',
+                username:'username'
+            },
+            title: 'string',
+            description: 'String'
+        
+        }
+        const wrapper = Enzyme.mount(
+            <table><tbody>
+                <Issue   {...issue} />
+            </tbody></table>
+        )
+        Router.reload = sinon.fake()
+        window.confirm = sinon.fake()
+        window.alert = sinon.fake()
+    
+
+        fetchMock.post('*', (url, opts)=>{
+            expect(JSON.parse(opts.body)._id).to.be.equal(issue._id)
+            return {body:{status:'ok'}}
+        })
+        expect(wrapper).to.have.length(1)
+        wrapper.find('button').simulate('click')
+        
+        done()
+        
+
+        })
+        
 })
