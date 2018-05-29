@@ -1,9 +1,10 @@
-import mongodb from 'mongodb'
 import next from 'next'
 import { parse } from 'url'
-const dev = process.env.NODE_ENV !== 'production'
+
 import { app } from './server/app'
 import { db } from './server/db'
+
+const dev = process.env.NODE_ENV !== 'production'
 interface User {
     username: string
     _id: string

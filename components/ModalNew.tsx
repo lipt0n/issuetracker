@@ -1,7 +1,9 @@
-import React from 'react'
 import Router from 'next/router'
+import React from 'react'
+
 import New from '../pages/new'
-export default class extends React.Component<any,any> {
+
+export default class extends React.Component<{ key: string }, any> {
     _shim = null
     dismiss = e => {
         if (this._shim === e.target) {

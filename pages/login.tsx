@@ -1,6 +1,6 @@
-import React from 'react'
-import Router from 'next/router'
 import Headers from 'fetch-headers'
+import Router from 'next/router'
+import React from 'react'
 
 const login_url = '/api/login'
 
@@ -51,7 +51,7 @@ export default class Login extends React.PureComponent {
             </h1>,
             <form
                 key="loginform"
-                action={'login_url'}
+                action={login_url}
                 method={'post'}
                 className={'mainContent'}
                 onSubmit={e => this.login(e)}

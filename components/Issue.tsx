@@ -1,6 +1,6 @@
-import React from 'react'
-import Router from 'next/router'
 import Headers from 'fetch-headers'
+import Router from 'next/router'
+import React from 'react'
 
 const changeStatus = async (e, _id) => {
     e.preventDefault()
@@ -46,12 +46,12 @@ export default ({ _id, date, status, title, description, user }) => {
     const _date = typeof date !== 'undefined' ? new Date(date) : new Date()
     return (
         <tr>
-            <td className='issue_date'>{_date.toUTCString()} </td>
-            <td className='issue_user'>{user && user.username}</td>
+            <td className="issue_date">{_date.toUTCString()} </td>
+            <td className="issue_user">{user && user.username}</td>
             <GetStatus status={status} onClick={e => changeStatus(e, _id)} />
-            <td className='issue_title'>{title}</td>
-            <td className='issue_description'>{description}</td>
+            <td className="issue_title">{title}</td>
+            <td className="issue_description">{description}</td>
         </tr>
     )
 }
-export {GetStatus}
+export { GetStatus }

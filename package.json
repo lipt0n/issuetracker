@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "nyc mocha -r ts-node/register   pages/*.test.tsx components/*.test.tsx ; rm -rf static/coverage; mv --force coverage/ static/coverage/",
+    "test": "nyc mocha -r ts-node/register   pages/*.test.tsx components/*.test.tsx",
     "testrest": "mocha -r ts-node/register ./*.test.ts",
     "dev": "ts-node-dev --ignore-watch .next* index.ts",
     "devfront": "next",
-    "herokudev": "NODE_ENV=developement  ts-node index.ts",
-    "heroku": "NODE_ENV=production ts-node index.ts",
-    "postinstall": "NODE_ENV=production next build",
+    "herokudev": "cross-env NODE_ENV=developement  ts-node index.ts",
+    "heroku": "cross-env NODE_ENV=production ts-node index.ts",
+    "postinstall": "cross-env NODE_ENV=production next build",
     "precommit": "pretty-quick --staged"
   },
   "nyc": {
@@ -27,8 +27,10 @@
       "**/_document.tsx"
     ],
     "reporter": [
-      "html"
+      "html",
+      "text"
     ],
+    "report-dir": "static/coverage",
     "all": true
   },
   "husky": {

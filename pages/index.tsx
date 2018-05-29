@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import React from 'react'
-import { ButtonAdd } from '../components/ButtonAdd'
-import ModalNew from '../components/ModalNew'
-import fetch from 'isomorphic-unfetch'
 import Headers from 'fetch-headers'
+import fetch from 'isomorphic-unfetch'
 import Router from 'next/router'
+import React from 'react'
+
+import { ButtonAdd } from '../components/ButtonAdd'
 import Issue from '../components/Issue'
+import ModalNew from '../components/ModalNew'
 
 interface User {
     _id: string
